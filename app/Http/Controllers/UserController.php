@@ -17,7 +17,9 @@ class UserController extends Controller
      */
     public function index()
     {
+        DB::enableQueryLog();
         $profiles = DB::table('users')->where('name', Auth::user()->name)->get();
+        //dd(DB::getQueryLog());
         return view('profile', ['profiles' => $profiles]);
     }
 
